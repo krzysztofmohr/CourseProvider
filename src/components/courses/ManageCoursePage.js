@@ -6,6 +6,7 @@ import PropTypes from 'prop-types'
 import {newCourse} from "../../../tools/mockData";
 import CourseForm from "./CourseForm";
 import Spinner from "../common/Spinner";
+import {toast} from "react-toastify";
 
 function ManageCoursePage({courses, authors, loadAuthors, loadCourses, saveCourses, history, ...props}) { // course ambiguity
     // avoid using redux for local form state
@@ -13,6 +14,7 @@ function ManageCoursePage({courses, authors, loadAuthors, loadCourses, saveCours
 
     const [course, setCourse] = useState({...props.course});
     const [errors, setErrors] = useState({});
+    const [saving, setSaving] = useState(false);
 
     useEffect(() => {
             if(authors.length === 0)
@@ -43,14 +45,16 @@ function ManageCoursePage({courses, authors, loadAuthors, loadCourses, saveCours
 
         function handleSave(event) {
             event.preventDefault();
+            setSaving(true);
             saveCourses(course).then(() => {
+                toast.success("Course saved");
                 history.push("/courses");
             });
         }
 
         return (
             authors.length === 0 || courses.length === 0 ? <Spinner /> :
-            <CourseForm authors={authors} course={course} errors={errors} onSave={handleSave} onChange={handleChange} />
+            <CourseForm authors={authors} course={course} errors={errors} onSave={handleSave} onChange={handleChange} saving={saving}/>
         );
 }
 
