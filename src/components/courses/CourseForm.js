@@ -42,7 +42,7 @@ const CourseForm = ({
 
       <TextInput
         name="category"
-        label="Category"
+        label="Category"a
         value={course.category}
         onChange={onChange}
         error={errors.category}
