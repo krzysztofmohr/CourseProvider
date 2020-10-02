@@ -58,6 +58,7 @@ function ManageCoursePage({courses, authors, loadAuthors, loadCourses, saveCours
 
         function handleSave(event) {
             event.preventDefault();
+            if(!formIsValid()) return ;
             setSaving(true);
             saveCourses(course).then(() => {
                 toast.success("Course saved");
