@@ -20,7 +20,7 @@ class CoursesPage extends React.Component {
         });
         loadCourses().catch(err=> {
             alert(err);
-        });p
+        });
     }
 
     handleDeleteCourse = async course => {
