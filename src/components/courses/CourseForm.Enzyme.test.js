@@ -23,7 +23,12 @@ it('renders form and header', () => {
     expect(wrapper.find('h2').text()).toEqual('Add Course'); // selector #a .a a
 });
 
-it('labels save buttons as Save when not saving', () => {
+it('labels save buttons as "Save" when not saving', () => {
     const wrapper = renderCourseForm();
-    expect(wrapper.find('button').text()).toEqual('Save'); // selector #a .a a
+    expect(wrapper.find('button').text()).toBe('Save'); // selector #a .a a
+});
+
+it('labels save buttons as "Saving" when not saving', () => {
+    const wrapper = renderCourseForm({saving: true});
+    expect(wrapper.find('button').text()).toBe('Saving'); // selector #a .a a
 });
