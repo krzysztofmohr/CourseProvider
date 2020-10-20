@@ -4,13 +4,16 @@ import {mount, shallow} from "enzyme";
 import {MemoryRouter} from "react-router-dom";
 
 it("contains 3 NavLinks via shallow", () => {
-    const numLinks = shallow(<Header />).find('NavLink').length;
+    const numLinks = shallow(<Header />).find('NavLink').length; // search for react component tag - raw JSX
     expect(numLinks).toEqual(3);
 });
-//
-// it("contains 3 anchors via mount", () => {
-//     const numA
-//     <MemoryRouter>
-//         <Header />
-//     </MemoryRouter>
-// })
+
+it("contains 3 anchors via mount", () => {
+    const numAnchors = mount(
+    <MemoryRouter>
+        <Header />
+    </MemoryRouter>
+    ).find('a').length;
+
+    expect(numAnchors).toEqual(3);
+});

@@ -13,14 +13,14 @@ function renderCourseForm(args) {
     }
 
     const props = {...defaultProps, ...args};
-    return shallow(<CourseForm {...props} />);
+    return shallow(<CourseForm {...props} />); // No DOM created, no child components rendered
 }
 
 it('renders form and header', () => {
     const wrapper = renderCourseForm();
     //console.log(wrapper.debug()); // shows the markup we are working with
     expect(wrapper.find('form').length).toBe(1); // selector
-    expect(wrapper.find('h2').text()).toEqual('Add Course'); // selector #a .a a
+    expect(wrapper.find('h2').text()).toEqual('Add Course'); // selector #a .a a // enzyme find function
 });
 
 it('labels save buttons as "Save" when not saving', () => {
